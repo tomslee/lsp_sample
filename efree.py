@@ -1,5 +1,9 @@
 #!/usr/bin/python3
 """
+A simple LSP server for "efree", written on pygls, which provides a framework
+for writing LSP servers.
+
+efree identifies lower-case "e" in a document and highlights it.
 """
 
 # -------------------------------------------------------------------------------
@@ -30,28 +34,28 @@ server = LanguageServer()
 @server.feature(TEXT_DOCUMENT_DID_OPEN)
 async def did_open(ls, params: DidOpenTextDocumentParams):
     """ Text document did open notification."""
-    ls.show_message("LS Text Document Did Open")
     _validate(ls, params)
+    logging.info(">>> Event: Text document did open")
 
 
 @server.feature(TEXT_DOCUMENT_DID_CHANGE)
 def did_change(ls, params: DidChangeTextDocumentParams):
     """Text document did change notification."""
-    ls.show_message("LS Text Document Did Change")
     _validate(ls, params)
+    logging.info(">>> Event: Text document did change")
 
 
 @server.feature(TEXT_DOCUMENT_DID_SAVE)
 def did_save(ls, params: DidSaveTextDocumentParams):
-    """Text document did change notification."""
-    ls.show_message("LS Text Document Did Save")
-    _validate(ls, params)
+    """Text document did save notification."""
+    logging.info(">>> Event: Text document did save")
 
 
 @server.feature(TEXT_DOCUMENT_DID_CLOSE)
 def did_close(ls, params: DidCloseTextDocumentParams):
     """Text document did close notification."""
-    logging.info("Text document did close")
+    _validate(ls, params)
+    logging.info(">>> Event: Text document did close")
 
 
 def _validate(ls, params):
@@ -60,9 +64,9 @@ def _validate(ls, params):
     """
     text_doc = ls.workspace.get_document(params.textDocument.uri)
     source = text_doc.source
-    ls.show_message_log('*** Validating document %s...', text_doc)
     diagnostics = []
     line_index = -1
+    # test comment
     for line in source.splitlines():
         logging.debug("*** %s", line)
         line_index += 1
@@ -87,14 +91,11 @@ def _validate(ls, params):
 
 def main():
     """
-    Entry point.
+    Entry point: start the language server
     """
-    # start_server(8080)
-    # server.start_tcp('localhost', 8080)
     logging.info("About to start efree Language Server")
     server.start_io()
     logging.info("Started efree Language Server")
-    _validate("what the hell is going on?")
 
 
 if __name__ == '__main__':
