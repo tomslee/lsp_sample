@@ -11,8 +11,9 @@ possibly a hoax. Propaganda, I murmur anxiously -- as though, just by saying so,
 I might allay my doubts -- typical politicians' propaganda. But public opinion
 gradually absorbs it as a fact.
 
-
 - Paragraph #1 from "A Void"
+
+## Also from "A Void"
 
 Noon rings out. A wasp, making an ominous sound, a sound akin to a klaxon or
 a tocsin, flits about. Augustus, who has had a bad night, sits up blinking and
@@ -31,8 +32,6 @@ caught in a flash of lightning or in a mist abruptly rising to unshroud an
 obvious sign - but a sign, alas, that would last an instant only to vanish for
 good.
 
-- Also from "A Void"
-
-## And now, a try by us
+## And now, try it on your own
 
 ...
